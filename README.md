@@ -136,5 +136,31 @@ V5/
 
 ---
 
+## 📮 问题反馈 · 更新计划 · 合作 / Feedback · Roadmap · Contact
+
+### 🐛 问题反馈 / Bug reports
+遇到解不开的包、闪退、乱码、误判等问题，欢迎通过下面任一方式反馈，**附上日志与复现步骤**会修得更快：
+- 推荐：在本仓库 [**Issues**](../../issues) 发帖（可直接贴截图 / 日志 txt，建议标注：Windows 还是 Android、系统版本、包格式如 zip/7z/rar、是否加密/分卷）。
+- 邮件：**xiaoyaotongxue8@gmail.com**（不方便用 GitHub 时）。
+
+> 日志在哪：Windows 为程序目录下的 `do_extract_log.txt`；Android 在主界面「③ 解压进度与日志」可导出详细/简略日志。
+
+### 🧭 更新方向 / Roadmap（计划中，欢迎投票/提需求）
+- [ ] Windows 图形界面（GUI）版本
+- [ ] 更多压缩格式（如 zstd）与更多分卷命名规则
+- [ ] Windows / Android 密码本互通（加密导出/导入）
+- [ ] 更细的并发与内存档位、失败一键重试
+- [ ] 更多语言（i18n 扩展）
+
+需求与优先级以 Issues 反馈为准。
+
+### 🤝 参与贡献 · 合作 / Contributing & collaboration
+- 欢迎提 Issue、Pull Request（建议先开 Issue 讨论方案），提交即表示你同意以本项目的非商业协议开源你的改动。
+- 技术交流、文档/翻译（尤其是其它语种）、真机兼容性测试（更多品牌/Android 版本）都非常欢迎。
+- **非商业的开源协作 / 学习交流**可邮件联系：**xiaoyaotongxue8@gmail.com**。
+  （来信请注明来意；任何形式的商业打包、转售、商业代解压合作均不在接受范围内。）
+
+---
+
 ## ⚖️ 协议 / License
 非商业开源，详见 [`LICENSE`](./LICENSE)。**禁止商用**；操作不可逆文件前请自行备份，作者不承担数据损失责任。

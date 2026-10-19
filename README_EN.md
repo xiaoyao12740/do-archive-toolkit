@@ -84,6 +84,28 @@ See [`docs/Technical.md`](./docs/Technical.md).
 | **LZ4** | https://lz4.github.io/lz4/ · https://github.com/lz4/lz4 | fast `.lz4` |
 | **WinRAR** | https://www.win-rar.com | RAR creation/handling (shareware) |
 
+## 📮 Feedback · Roadmap · Contact
+
+### 🐛 Bug reports
+For archives that won't open, crashes, garbled filenames, or wrong detection, please open an
+[**Issue**](../../issues) with the log and steps to reproduce (platform, OS version, format,
+whether it is encrypted/split). You can also email **xiaoyaotongxue8@gmail.com**.
+Logs: `do_extract_log.txt` (Windows) or the in-app log export (Android).
+
+### 🧭 Roadmap (planned; votes and requests welcome)
+- [ ] Windows GUI
+- [ ] More formats (e.g. zstd) and more split-volume naming schemes
+- [ ] Sync/export-import of the Windows & Android password books
+- [ ] Finer concurrency/memory tiers and one-tap retry of failures
+- [ ] More languages
+
+### 🤝 Contributing & collaboration
+Issues and Pull Requests are welcome (please open an Issue first for non-trivial changes);
+submitting a PR means you agree to license your contribution under this project's non-commercial terms.
+Docs, translations, and on-device compatibility testing are equally appreciated.
+For **non-commercial** open-source collaboration or learning exchange, email
+**xiaoyaotongxue8@gmail.com**. Commercial repackaging, resale, or paid extraction services are not accepted.
+
 ## ⚠️ License
 Non-commercial open source — see [`LICENSE`](./LICENSE). **Commercial use is forbidden.**
 Back up irreplaceable files before destructive operations; the author is not liable for data loss.

@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 📮 邮件联系作者（不方便用 GitHub / 非商业合作）
+    url: mailto:xiaoyaotongxue8@gmail.com
+    about: 打不开 GitHub Issue、或纯非商业的学习/翻译/真机测试协作，可发邮件到 xiaoyaotongxue8@gmail.com。商业打包/转售/代解压请勿扰。
+  - name: 📖 使用教程与常见问题
+    url: https://github.com/xiaoyao12740/do-archive-toolkit#-问题反馈--更新计划--合作--feedback--roadmap--contact
+    about: 先看 README 的下载、教程与反馈说明，多数问题（安装权限、覆盖升级、日志位置）已有答案。
