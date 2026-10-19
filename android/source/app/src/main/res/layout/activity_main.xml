@@ -1,0 +1,512 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/mainRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="14dp">
+
+        <!-- 顶栏：标题 + 入口（跟随主题，磨砂；ActionBar 已去掉，标题只此一处） -->
+        <LinearLayout
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="6dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/tvTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/app_name"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:maxLines="1" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="end"
+                android:layout_marginTop="2dp">
+
+                <Button
+                    android:id="@+id/btnToggle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/btn_compress"
+                    android:minWidth="96dp"
+                    android:layout_marginRight="6dp"
+                    android:backgroundTint="#FF00897B"
+                    android:textColor="#FFFFFF" />
+
+                <Button
+                    android:id="@+id/btnSettings"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/btn_settings"
+                    android:minWidth="120dp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- 解压视图面板 -->
+        <LinearLayout
+            android:id="@+id/extractPanel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+        <!-- 卡片1：目录 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/card_bg"
+            android:padding="14dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sec_select_dir"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:textColor="#555555" />
+
+            <Button
+                android:id="@+id/btnPickDir"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/btn_choose_dir" />
+
+            <TextView
+                android:id="@+id/tvPath"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/tv_no_dir"
+                android:paddingTop="8dp"
+                android:textSize="13sp"
+                android:textColor="#666666" />
+
+            <Button
+                android:id="@+id/btnStart"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/btn_start_extract"
+                android:backgroundTint="#FF6200EE"
+                android:textColor="#FFFFFF" />
+        </LinearLayout>
+
+        <!-- 卡片2：工作调度 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/card_bg"
+            android:padding="14dp"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sec_schedule"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:textColor="#555555" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tier_label"
+                android:layout_marginTop="8dp"
+                android:textSize="12sp"
+                android:textColor="#888888" />
+
+            <LinearLayout
+                android:id="@+id/tierRow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="6dp">
+
+                <Button
+                    android:id="@+id/btnTierLow"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:maxLines="1"
+                    android:text="@string/tier_low" />
+                <Button
+                    android:id="@+id/btnTierMed"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:maxLines="1"
+                    android:text="@string/tier_mid" />
+                <Button
+                    android:id="@+id/btnTierHigh"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:maxLines="1"
+                    android:text="@string/tier_high" />
+                <Button
+                    android:id="@+id/btnTierAuto"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:maxLines="1"
+                    android:textSize="10sp"
+                    android:text="@string/tier_auto" />
+            </LinearLayout>
+
+            <CheckBox
+                android:id="@+id/cbDelSource"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/del_source" />
+
+            <TextView
+                android:id="@+id/tvStatus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:paddingTop="6dp"
+                android:textSize="12sp"
+                android:textColor="#666666" />
+        </LinearLayout>
+
+        <!-- 卡片3：解压进度与日志 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/card_bg"
+            android:padding="14dp"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sec_progress"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:textColor="#555555" />
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="1"
+                android:progress="0"
+                android:layout_marginTop="10dp" />
+
+            <TextView
+                android:id="@+id/tvProgress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/tv_pending"
+                android:paddingTop="6dp"
+                android:textSize="14sp"
+                android:textColor="#1A1A1A" />
+
+            <ScrollView
+                android:id="@+id/svLog"
+                android:layout_width="match_parent"
+                android:layout_height="260dp"
+                android:layout_marginTop="8dp"
+                android:background="#F0F0F4">
+
+                <TextView
+                    android:id="@+id/tvLog"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textSize="12sp"
+                    android:typeface="monospace"
+                    android:padding="8dp"
+                    android:textColor="#333333"
+                    android:textIsSelectable="true" />
+            </ScrollView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp">
+
+                <Button
+                    android:id="@+id/btnExportDetail"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/btn_export_detail" />
+                <Button
+                    android:id="@+id/btnExportSimple"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/btn_export_simple" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="6dp">
+
+                <Button
+                    android:id="@+id/btnDelDetail"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/btn_del_detail" />
+                <Button
+                    android:id="@+id/btnDelSimple"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/btn_del_simple" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- 卡片4：其他入口 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/card_bg"
+            android:padding="14dp"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sec_other"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:textColor="#555555" />
+
+            <Button
+                android:id="@+id/btnPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/btn_passwords" />
+
+            <Button
+                android:id="@+id/btnCompressGo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/btn_make_archive"
+                android:backgroundTint="#FF00897B"
+                android:textColor="#FFFFFF" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/support_line"
+            android:paddingTop="14dp"
+            android:paddingBottom="8dp"
+            android:textSize="11sp"
+            android:textColor="#AAAAAA"
+            android:gravity="center" />
+        </LinearLayout>
+
+        <!-- 压缩视图面板（主界面右上角切换显示） -->
+        <LinearLayout
+            android:id="@+id/compressPanel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <!-- ① 选择源 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/card_bg"
+                android:padding="14dp">
+                <TextView
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="@string/sec_choose_source"
+                    android:textSize="13sp" android:textStyle="bold" android:textColor="#555555"/>
+                <Button
+                    android:id="@+id/c_btnPickSource"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp" android:text="@string/btn_choose_source"/>
+                <TextView
+                    android:id="@+id/c_tvSource"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp" android:text="@string/tv_no_source" android:textColor="#666666"/>
+                <TextView
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp" android:text="@string/source_hint"
+                    android:textSize="12sp" android:textColor="#888888"/>
+            </LinearLayout>
+
+            <!-- ② 层数 -->
+            <LinearLayout
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical" android:background="@drawable/card_bg"
+                android:padding="14dp" android:layout_marginTop="10dp">
+                <TextView
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="@string/sec_layers" android:textSize="13sp"
+                    android:textStyle="bold" android:textColor="#555555"/>
+                <EditText
+                    android:id="@+id/c_etLayers"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp" android:inputType="number"
+                    android:hint="@string/layers_hint" android:text="3"/>
+            </LinearLayout>
+
+            <!-- ③ 加密方式 -->
+            <LinearLayout
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical" android:background="@drawable/card_bg"
+                android:padding="14dp" android:layout_marginTop="10dp">
+                <TextView
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="@string/sec_encrypt"
+                    android:textSize="13sp" android:textStyle="bold" android:textColor="#555555"/>
+                <RadioGroup
+                    android:id="@+id/c_rgEncrypt"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp" android:orientation="vertical">
+                    <RadioButton android:id="@+id/c_rbNoEnc" android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:text="@string/enc_none"/>
+                    <RadioButton android:id="@+id/c_rbPartial" android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:text="@string/enc_part"/>
+                    <RadioButton android:id="@+id/c_rbAll" android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:text="@string/enc_all"/>
+                </RadioGroup>
+            </LinearLayout>
+
+            <!-- ④ 压缩方法 -->
+            <LinearLayout
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical" android:background="@drawable/card_bg"
+                android:padding="14dp" android:layout_marginTop="10dp">
+                <TextView
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="@string/sec_method" android:textSize="13sp"
+                    android:textStyle="bold" android:textColor="#555555"/>
+                <RadioGroup
+                    android:id="@+id/c_rgFormat"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="vertical" android:layout_marginTop="8dp">
+                    <RadioButton android:id="@+id/c_rbManual" android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:text="@string/method_manual"/>
+                    <RadioButton android:id="@+id/c_rbRandom" android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:text="@string/method_random"/>
+                </RadioGroup>
+                <Spinner
+                    android:id="@+id/c_spFormat"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"/>
+                <TextView
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="@string/method_hint"
+                    android:textSize="12sp" android:textColor="#888888"/>
+            </LinearLayout>
+
+            <!-- ⑤ 加密本 -->
+            <LinearLayout
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical" android:background="@drawable/card_bg"
+                android:padding="14dp" android:layout_marginTop="10dp">
+                <TextView
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="@string/sec_pwdbook" android:textSize="13sp"
+                    android:textStyle="bold" android:textColor="#555555"/>
+                <TextView
+                    android:id="@+id/c_tvPwdCount"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp" android:text="@string/pwdbook_count"
+                    android:textColor="#666666"/>
+                <Button
+                    android:id="@+id/c_btnManagePwd"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp" android:text="@string/btn_manage_enc"/>
+                <EditText
+                    android:id="@+id/c_etPwd"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp" android:inputType="text"
+                    android:hint="@string/pwd_hint"/>
+            </LinearLayout>
+
+            <!-- ⑥ 删除源 -->
+            <LinearLayout
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical" android:background="@drawable/card_bg"
+                android:padding="14dp" android:layout_marginTop="10dp">
+                <TextView
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="@string/sec_after" android:textSize="13sp"
+                    android:textStyle="bold" android:textColor="#555555"/>
+                <CheckBox
+                    android:id="@+id/c_cbDeleteSrc"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp" android:text="@string/del_after"/>
+            </LinearLayout>
+
+            <!-- 开始 + 进度 + 日志 -->
+            <LinearLayout
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical" android:background="@drawable/card_bg"
+                android:padding="14dp" android:layout_marginTop="10dp">
+                <Button
+                    android:id="@+id/c_btnCompress"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:text="@string/btn_start_compress" android:textSize="16sp"
+                    android:backgroundTint="#FF00897B" android:textColor="#FFFFFF"/>
+                <ProgressBar
+                    android:id="@+id/c_progressBar"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp" android:max="100"/>
+                <TextView
+                    android:id="@+id/c_tvCProgress"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp" android:text="@string/tv_pending" android:textColor="#1A1A1A"/>
+                <ScrollView
+                    android:id="@+id/c_svCLog"
+                    android:layout_width="match_parent" android:layout_height="200dp"
+                    android:layout_marginTop="8dp" android:background="#1E1E1E">
+                    <TextView
+                        android:id="@+id/c_tvCLog"
+                        android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:padding="8dp" android:textColor="#00E676"
+                        android:textSize="12sp" android:fontFamily="monospace"/>
+                </ScrollView>
+                <TextView
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:text="@string/compress_log_hint"
+                    android:textSize="12sp" android:textColor="#888888"/>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

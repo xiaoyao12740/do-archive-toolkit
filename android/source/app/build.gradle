@@ -1,0 +1,70 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+}
+
+android {
+    namespace 'com.example.extractor'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.example.extractor"
+        minSdk 28
+        targetSdk 34
+        versionCode 148
+        versionName "1.4.8"
+
+        ndk {
+            abiFilters 'arm64-v8a', 'x86_64'
+        }
+    }
+
+    signingConfigs {
+        release {
+            storeFile file('D:/AndroidDev/xiaoyao12740-release.jks')
+            storePassword 'extractor2026'
+            keyAlias 'xiaoyao12740'
+            keyPassword 'extractor2026'
+            v1SigningEnabled true
+            v2SigningEnabled true
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            signingConfig signingConfigs.release
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    kotlinOptions {
+        jvmTarget = '17'
+    }
+
+    packagingOptions {
+        jniLibs {
+            useLegacyPackaging false
+        }
+    }
+}
+
+dependencies {
+    implementation 'androidx.appcompat:appcompat:1.7.0'
+    implementation 'com.google.android.material:material:1.12.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.1'
+    // 压缩库
+    implementation 'org.apache.commons:commons-compress:1.27.1'
+    implementation 'com.github.junrar:junrar:7.5.5'
+    implementation 'org.lz4:lz4-java:1.8.0'
+    implementation 'org.tukaani:xz:1.9'
+    // 加密 zip（zipcrypto + AES）完整解压
+    implementation 'net.lingala.zip4j:zip4j:2.11.5'
+    // 加密 7z：commons-compress SevenZFile 支持 AES-256 加密 7z（纯 Java，跨 ABI）
+    implementation 'org.apache.commons:commons-compress:1.28.0'
+}

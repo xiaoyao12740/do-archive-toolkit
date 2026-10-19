@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.pyc
+build_tmp/
+dist/
+*.spec
+
+# Logs / runtime
+do_extract_log.txt
+未解压_需要密码/
+未解压_其他原因/
+
+# OS
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# Android build artifacts
+android/source/.gradle/
+android/source/build/
+android/source/app/build/
+android/source/local.properties
+android/source/.idea/
+*.keystore
+*.jks
