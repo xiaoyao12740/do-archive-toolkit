@@ -18,6 +18,34 @@
 
 ---
 
+## ⬇️ 一键下载 / Quick Download
+
+> 不用看源码？直接到 **[📦 Releases 发行页](../../releases/latest)** 按设备下载即可，开箱即用。
+
+| 你的设备 | 推荐下载 | 说明 |
+|---|---|---|
+| 🖥️ **Windows 电脑**（最省事） | [**doArchive-Windows-portable.zip**](../../releases/latest/download/doArchive-Windows-portable.zip) | 免安装整包：解压即用，已含 7-Zip / lz4 |
+| 🖥️ Windows（只要单文件） | [**doArchive.exe**](../../releases/latest/download/doArchive.exe) | 单可执行文件，放在任意目录运行 |
+| 📱 **安卓手机**（Android 14–17） | [**doArchive-Android-v1.4.8.apk**](../../releases/latest/download/doArchive-Android-v1.4.8.apk) | 安装包，允许"未知来源"后直接安装 |
+
+- Windows 装好后：解压整包 → 双击 `解压.bat` / `压缩.bat`，或直接运行 `doArchive.exe`；也可把压缩包**拖到 bat 上**。
+- 安卓装好后：首次运行授予"文件"权限；**升级请覆盖安装**，密码与设置会保留。
+- 所有文件均本地运行、无联网、无广告；Windows 若被 SmartScreen 拦截，选"仍要运行"（未做付费签名所致）。
+
+---
+
+## 🖼️ 界面预览 / Screenshots
+
+<p align="center">
+  <img src="./assets/windows-terminal.png" alt="Windows 终端运行效果" width="720">
+</p>
+
+| 📱 Android 主界面 | 🎨 12 主题 / 调度 / 双语设置页 |
+|:---:|:---:|
+| <img src="./assets/android-main.png" width="260"> | <img src="./assets/android-settings.png" width="260"> |
+
+---
+
 ## 🌐 语言 / Language
 
 - 中文说明：往下阅读本文件，平台细节见 [`docs/`](./docs)
@@ -27,7 +55,7 @@
 
 ## ✨ 功能一览 / Features
 
-### 🖥️ Windows 端（`windows/`，本仓库 V5）
+### 🖥️ Windows 端（本仓库 V5，见 `windows/`）
 - **解压 + 压缩双向**：解压 zip/7z/rar/tar/gz/bz2/xz/lz4；压缩 7z/zip/tar，可加密、可分卷
 - **单文件 / 文件夹通吃**：拖一个包，或拖整个目录，都能识别
 - **自动递归"套娃"**：解压后里面还有压缩包？自动接着解，直到没有为止
@@ -39,7 +67,7 @@
 - **三种形态任选**：绿色 `.exe`（免装 Python）、`.bat + .py`（可读源码）、`.ps1`（PowerShell）
 - 自带绿色版 **7-Zip** 与 **lz4**，多数机器解压即用、零配置
 
-### 📱 Android 端（`android/`，v1.4.8）
+### 📱 Android 端（v1.4.8，见 `android/`）
 - 批量解压 / 压缩、加密 zip(AES-256)/7z、分卷、套娃、密码本（加密本 / 解密本）
 - 12 种主题全页面联动（含夜间黑、护眼、自定义背景 / 字体色）
 - 工作调度低 / 中 / 高 / 自动 / 自定义并发

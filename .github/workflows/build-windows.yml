@@ -1,0 +1,61 @@
+name: Build Windows EXE
+
+# 在推送 v* 标签（发布 Release）时，或手动从 Actions 页面触发时，
+# 用 PyInstaller 在 Windows 上自动打包单文件 exe 并上传到 Release / 构件。
+# Builds a single-file Windows exe with PyInstaller on tag (release) or manual dispatch.
+
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+
+permissions:
+  contents: write   # 允许上传构件到 Release / needed to attach release assets
+
+jobs:
+  build-windows:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install PyInstaller
+        run: python -m pip install --upgrade pip pyinstaller
+
+      - name: Build single-file exe
+        working-directory: windows
+        run: |
+          pyinstaller --onefile --console --name "doArchive" do_extract.py
+
+      - name: Stage portable package (exe + bundled tools)
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Force -Path stage | Out-Null
+          Copy-Item "windows/dist/doArchive.exe" "stage/doArchive.exe"
+          Copy-Item "windows/tools" -Destination "stage/tools" -Recurse
+          # 中文名副本，方便中文用户识别；ASCII 名保证跨平台兼容
+          Compress-Archive -Path "stage/*" -DestinationPath "doArchive-Windows-portable.zip" -Force
+
+      - name: Upload artifact (for manual runs)
+        uses: actions/upload-artifact@v4
+        with:
+          name: doArchive-Windows
+          path: |
+            windows/dist/doArchive.exe
+            doArchive-Windows-portable.zip
+
+      - name: Attach assets to GitHub Release (tag runs only)
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            windows/dist/doArchive.exe
+            doArchive-Windows-portable.zip
+          fail_on_unmatched_files: true

@@ -23,3 +23,6 @@ android/source/local.properties
 android/source/.idea/
 *.keystore
 *.jks
+
+# release staging
+_release/
